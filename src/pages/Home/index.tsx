@@ -1,7 +1,15 @@
 import { Information } from "./Components/Information";
+import { Card } from "./Components/Card";
 
 import Coffee from "../../assets/img/coffee.svg"
-import { Banner, BannerLeft, BannerRight, HomeContainer } from "./styles";
+import { 
+  Banner, 
+  BannerLeft, 
+  BannerRight, 
+  CoffeeSection, 
+  HomeContainer, 
+  MainSection 
+} from "./styles";
 
 export function Home(){
   return (
@@ -15,6 +23,12 @@ export function Home(){
           <img src={ Coffee } alt=""/>
         </BannerLeft>
       </Banner>
+
+      <MainSection>
+        <CoffeeSection>
+          <Card />
+        </CoffeeSection>
+      </MainSection>
     </HomeContainer>
   )
 }
