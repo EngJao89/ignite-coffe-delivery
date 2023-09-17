@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Title = styled.h1`
-  font-family: "Baloo 2", cursive;
+  font-family: 'Baloo 2', cursive;
   font-size: 3rem;
   font-weight: 800;
   line-height: 130%;

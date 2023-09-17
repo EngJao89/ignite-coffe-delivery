@@ -1,3 +1,4 @@
+import { ShoppingCart } from "phosphor-react";
 import { Button } from "../../../../components/Button";
 
 import { 
@@ -14,7 +15,7 @@ import {
 } from "./styles";
 
 import tradicionalExpresso from "../../../../assets/coffee-images/traditional-espresso.svg";
-import { ShoppingCart } from "phosphor-react";
+import { InputQuantity } from '../../../../components/InputQuantity/index';
 
 export function Card(){
   return(
@@ -35,6 +36,7 @@ export function Card(){
             <span>9,90</span>
           </PriceContainer>
           <PurchaseContainer>
+            <InputQuantity />
             <Button
               type="button"
               color="purple-dark"
