@@ -1,12 +1,15 @@
-import { MapPin } from "phosphor-react";
+import { CurrencyDollar, MapPin, Timer } from "phosphor-react";
 import { 
   Container, 
   Content, 
   DetailContent, 
   DetailValuesContent, 
   InformationContent, 
+  LeftSide, 
   RightSide 
 } from "./styles";
+
+import Delivery from "../../assets/img/delivery.svg";
 
 export function Success () {
   return (
@@ -21,12 +24,43 @@ export function Success () {
               <MapPin weight="fill" size={16} color="purple" />
 
               <InformationContent>
-                
+                <span>
+                    Entrega em{" "}
+                    <b>
+                      Rua Ingá, Qd. 10 Lt. 30
+                    </b>
+                  </span>
+                  <span>
+                    Aldeia dos Sonhos - Anápolis,{" "}
+                    Goiás
+                  </span>
+              </InformationContent>
+            </DetailValuesContent>
+
+            <DetailValuesContent>
+              <Timer size={16} weight="fill" color="blue" />
+              <InformationContent>
+                <span>Previsão de entrega</span>
+                <b>20 min - 30 min </b>
+              </InformationContent>
+            </DetailValuesContent>
+
+            <DetailValuesContent>
+              <CurrencyDollar size={16} weight="fill" color="yellowDark" />
+              <InformationContent>
+                <span>Pagamento na entrega</span>
+                <b>R$ 25,00</b>
               </InformationContent>
             </DetailValuesContent>
           </DetailContent>
-          
         </RightSide>
+
+        <LeftSide>
+          <img 
+            src={Delivery} 
+            alt=""
+          />
+        </LeftSide>
       </Content>
     </Container>
   )

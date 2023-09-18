@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   padding-top: 80px;
+  margin-left: 5rem;
+  margin-right: 5rem;
 
   h1 {
     font-family: "Baloo 2", cursive;
