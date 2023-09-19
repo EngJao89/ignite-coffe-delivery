@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useForm, FormProvider } from "react-hook-form";
 import { CurrencyDollar, MapPinLine } from "phosphor-react";
 
 import { 
@@ -11,15 +12,30 @@ import {
   Title 
 } from "./styles";
 
-import { CheckoutCardHeader, CheckoutEmptyList } from "./Components";
+import { CheckoutAddress, CheckoutCardHeader, CheckoutEmptyList } from "./Components";
 import { PaymentSelect, TSelectPayment } from "../../components/PaymentSelect";
 import { CheckoutDetails } from "./Components/CheckoutDetails";
 
+export type TAddress = {
+  cep: string;
+  rua: string;
+  numero: string;
+  complemento?: string;
+  bairro: string;
+  cidade: string;
+  uf: string;
+};
+
+export type TFormData = TAddress;
 
 export function Checkout (){
   const [selectedPayment, setSelectedPayment] = useState<TSelectPayment | null>(
     null
   );
+
+  const methods = useForm<TFormData>();
+
+  const { handleSubmit } = methods;
 
   function handleSelectPayment(paymentType: TSelectPayment) {
     setSelectedPayment(paymentType);
@@ -43,6 +59,10 @@ export function Checkout (){
               color: "yellow",
             }}
           />
+
+          <FormProvider {...methods}>
+            <CheckoutAddress />
+          </FormProvider>
         </CardContainer>
 
         <CardContainer>
@@ -78,7 +98,7 @@ export function Checkout (){
         <Title>Cafés selecionados</Title>
 
         <CoffeeCardContainer>
-          <CheckoutEmptyList />
+          <CheckoutDetails />
         </CoffeeCardContainer>
       </LeftSection>
     </CheckoutContainer>
