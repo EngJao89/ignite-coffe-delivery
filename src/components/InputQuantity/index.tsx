@@ -7,7 +7,7 @@ export function InputQuantity (){
       <QuantityButton type="button">
         <Minus size={14} weight="bold" />
       </QuantityButton>
-      <QuantityInput>0</QuantityInput>
+      <QuantityInput>3</QuantityInput>
       <QuantityButton>
         <Plus size={14} weight="bold" />
       </QuantityButton>

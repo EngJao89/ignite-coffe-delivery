@@ -22,7 +22,7 @@ export function CheckoutCoffeeCard() {
       <CoffeeDetails>
         <CoffeeInformations>
           <CoffeeTitle>Expresso Tradicional</CoffeeTitle>
-          <CoffeePrice>R$ 9,90</CoffeePrice>
+          <CoffeePrice>R$ 29,70</CoffeePrice>
         </CoffeeInformations>
 
         <CoffeeActionsContent>
