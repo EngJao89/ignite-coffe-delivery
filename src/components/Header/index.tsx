@@ -14,14 +14,18 @@ export function Header() {
 
       <HeaderContent>
         <Button color="purple-light">
-          <MapPin size={22} />
+          <MapPin size={22} weight="fill" className="header__map-pin_icon" />
           <span>Anápolis, Goiás</span>
         </Button>
         <Button 
           color="yellow-light" 
           className="cart__button"
         >
-          <ShoppingCart size={22} />
+          <ShoppingCart
+            size={22}
+            weight="fill"
+            className="header__shopping-cart_icon"
+          />
           3
         </Button>
       </HeaderContent>

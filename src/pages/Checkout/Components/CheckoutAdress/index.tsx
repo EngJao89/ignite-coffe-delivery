@@ -23,7 +23,7 @@ const CheckoutAddress = forwardRef<HTMLInputElement>((_, ref) => {
         name="rua"
         defaultValue=""
         render={({ field }) => (
-          <TextInput.Root>
+          <TextInput.Root fullWidth>
             <TextInput.Input
               placeholder="RUA"
               {...field}
