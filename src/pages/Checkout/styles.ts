@@ -5,6 +5,8 @@ export const CheckoutContainer = styled.form`
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
+  margin-left: 3rem;
+  margin-right: 3rem;
 
   @media only screen and (max-width: 768px) {
     flex-direction: column;
@@ -43,7 +45,7 @@ export const CardContainer = styled.div`
   background-color: ${({ theme }) => theme["base-card"]};
   border-radius: 6px;
 
-  width: 800px;
+  width: 700px;
   height: auto;
 
   padding: 40px;
