@@ -11,7 +11,7 @@ import {
   Title 
 } from "./styles";
 
-import { CheckoutCardHeader } from "./Components";
+import { CheckoutCardHeader, CheckoutEmptyList } from "./Components";
 import { PaymentSelect, TSelectPayment } from "../../components/PaymentSelect";
 import { CheckoutDetails } from "./Components/CheckoutDetails";
 
@@ -43,34 +43,34 @@ export function Checkout (){
               color: "yellow",
             }}
           />
+        </CardContainer>
 
-          <CardContainer>
-            <CheckoutCardHeader
-              title="Pagamento"
-              subtitle="O pagamento é feito na entrega. Escolha a forma que deseja pagar"
-              icon={{
-                component: <CurrencyDollar size={24} />,
-                color: "purple",
-              }}
+        <CardContainer>
+          <CheckoutCardHeader
+            title="Pagamento"
+            subtitle="O pagamento é feito na entrega. Escolha a forma que deseja pagar"
+            icon={{
+              component: <CurrencyDollar size={24} />,
+              color: "purple",
+            }}
+          />
+          <PaymentSelectContent>
+            <PaymentSelect
+              type="credit"
+              onSelect={handleSelectPayment}
+              isSelected={creditSelected}
             />
-            <PaymentSelectContent>
-              <PaymentSelect
-                  type="credit"
-                  onSelect={handleSelectPayment}
-                  isSelected={creditSelected}
-                />
-                <PaymentSelect
-                  type="debit"
-                  onSelect={handleSelectPayment}
-                  isSelected={debitSelected}
-                />
-                <PaymentSelect
-                  type="money"
-                  onSelect={handleSelectPayment}
-                  isSelected={moneySelected}
-                />
-            </PaymentSelectContent>
-          </CardContainer>
+            <PaymentSelect
+              type="debit"
+              onSelect={handleSelectPayment}
+              isSelected={debitSelected}
+            />
+            <PaymentSelect
+              type="money"
+              onSelect={handleSelectPayment}
+              isSelected={moneySelected}
+            />
+          </PaymentSelectContent>
         </CardContainer>
       </RightSection>
 
@@ -78,7 +78,7 @@ export function Checkout (){
         <Title>Cafés selecionados</Title>
 
         <CoffeeCardContainer>
-          <CheckoutDetails />
+          <CheckoutEmptyList />
         </CoffeeCardContainer>
       </LeftSection>
     </CheckoutContainer>

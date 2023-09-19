@@ -1,9 +1,11 @@
 import { CheckoutCardHeader } from "./CheckoutCardHeader";
 import { CheckoutCoffeeCard } from './CheckoutCoffeeCard/index';
 import { CheckoutDetails } from "./CheckoutDetails";
+import { CheckoutEmptyList } from './CheckoutEmptyList/index';
 
 export {
   CheckoutCardHeader,
   CheckoutCoffeeCard,
-  CheckoutDetails
+  CheckoutDetails,
+  CheckoutEmptyList
 };
