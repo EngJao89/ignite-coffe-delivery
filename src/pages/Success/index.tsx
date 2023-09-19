@@ -10,6 +10,7 @@ import {
 } from "./styles";
 
 import Delivery from "../../assets/img/delivery.svg";
+import { Icon } from "../../components/Icon";
 
 export function Success () {
   return (
@@ -21,7 +22,7 @@ export function Success () {
         <RightSide>
           <DetailContent>
             <DetailValuesContent>
-              <MapPin weight="fill" size={16} color="purple" />
+              <Icon color="purple" icon={<MapPin weight="fill" size={16} />} />
 
               <InformationContent>
                 <span>
@@ -38,7 +39,7 @@ export function Success () {
             </DetailValuesContent>
 
             <DetailValuesContent>
-              <Timer size={16} weight="fill" color="blue" />
+              <Icon color="yellow" icon={<Timer size={16} weight="fill" />} />
               <InformationContent>
                 <span>Previsão de entrega</span>
                 <b>20 min - 30 min </b>
@@ -46,7 +47,10 @@ export function Success () {
             </DetailValuesContent>
 
             <DetailValuesContent>
-              <CurrencyDollar size={16} weight="fill" color="yellowDark" />
+              <Icon
+                color="yellowDark"
+                icon={<CurrencyDollar size={16} weight="fill" />}
+              />
               <InformationContent>
                 <span>Pagamento na entrega</span>
                 <b>R$ 25,00</b>
