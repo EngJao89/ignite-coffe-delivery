@@ -1,7 +1,10 @@
 import { Information } from "./Components/Information";
 import { Card } from "./Components/Card";
 
+import { coffes } from "./utils/json/coffees.json";
+
 import Coffee from "../../assets/img/coffee.svg"
+
 import { 
   Banner, 
   BannerLeft, 
@@ -25,8 +28,12 @@ export function Home(){
       </Banner>
 
       <MainSection>
+      <h1>Nossos cafés</h1>
+
         <CoffeeSection>
-          <Card />
+          {coffes.map((coffee) => (
+            <Card key={coffee.id} coffee={coffee} />
+          ))}
         </CoffeeSection>
       </MainSection>
     </HomeContainer>

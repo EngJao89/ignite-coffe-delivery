@@ -40,6 +40,8 @@ export const BannerLeft = styled.section`
 export const MainSection = styled.section`
   display: flex;
   flex-direction: column;
+  margin-left: 16px;
+  margin-right: 16px;
 
   margin-top: 108px;
 
