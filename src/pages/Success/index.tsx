@@ -27,11 +27,11 @@ export function Success () {
                 <span>
                     Entrega em{" "}
                     <b>
-                      Rua Ingá, Qd. 10 Lt. 30
+                      Av. GT 1
                     </b>
                   </span>
                   <span>
-                    Aldeia dos Sonhos - Anápolis,{" "}
+                    Condomínio Grand Trianon - Anápolis,{" "}
                     Goiás
                   </span>
               </InformationContent>

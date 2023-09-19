@@ -22,6 +22,7 @@ export function Header() {
           className="cart__button"
         >
           <ShoppingCart size={22} />
+          3
         </Button>
       </HeaderContent>
     </HeaderContainer>
