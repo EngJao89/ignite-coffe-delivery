@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useForm, FormProvider } from "react-hook-form";
 import { CurrencyDollar, MapPinLine } from "phosphor-react";
 
@@ -12,9 +13,15 @@ import {
   Title 
 } from "./styles";
 
-import { CheckoutAddress, CheckoutCardHeader, CheckoutEmptyList } from "./Components";
+import { 
+  CheckoutAddress, 
+  CheckoutCardHeader, 
+  CheckoutEmptyList,
+  CheckoutDetails,
+} from "./Components";
+
+import { useCoffee } from "../../hooks/useCoffee";
 import { PaymentSelect, TSelectPayment } from "../../components/PaymentSelect";
-import { CheckoutDetails } from "./Components/CheckoutDetails";
 
 export type TAddress = {
   cep: string;
@@ -29,9 +36,15 @@ export type TAddress = {
 export type TFormData = TAddress;
 
 export function Checkout (){
+  const navigate = useNavigate();
+
+  const { coffeeList, handleCheckout } = useCoffee();
+
   const [selectedPayment, setSelectedPayment] = useState<TSelectPayment | null>(
     null
   );
+
+  const coffeeListIsEmpty = coffeeList && coffeeList.length > 0;
 
   const methods = useForm<TFormData>();
 
@@ -39,6 +52,62 @@ export function Checkout (){
 
   function handleSelectPayment(paymentType: TSelectPayment) {
     setSelectedPayment(paymentType);
+  }
+
+  function validateAddress(data: TAddress) {
+    console.log("entrou");
+    const errors: Partial<TAddress> = {};
+
+    if (!data.cep) {
+      errors.cep = "CEP obrigatório";
+    }
+
+    if (!data.rua) {
+      errors.rua = "Rua obrigatória";
+    }
+
+    if (!data.numero) {
+      errors.numero = "Número obrigatório";
+    }
+
+    if (!data.bairro) {
+      errors.bairro = "Bairro obrigatório";
+    }
+
+    if (!data.cidade) {
+      errors.cidade = "Cidade obrigatória";
+    }
+
+    if (!data.uf) {
+      errors.uf = "UF obrigatório";
+    }
+
+    return errors;
+  }
+
+  function onSubmit(data: TAddress) {
+    console.log("entrou 1");
+
+    const errors = validateAddress(data);
+
+    if (Object.keys(errors).length > 0) {
+      alert("Preencha todos os campos do endereço");
+
+      return;
+    }
+
+    if (!selectedPayment) {
+      alert("Selecione uma forma de pagamento");
+
+      return;
+    }
+
+    handleCheckout({
+      address: data,
+      paymentMethod: selectedPayment,
+    });
+
+    navigate("/success");
   }
 
   const creditSelected = selectedPayment === "credit";
@@ -98,7 +167,7 @@ export function Checkout (){
         <Title>Cafés selecionados</Title>
 
         <CoffeeCardContainer>
-          <CheckoutDetails />
+          {coffeeListIsEmpty ? <CheckoutDetails /> : <CheckoutEmptyList />}
         </CoffeeCardContainer>
       </LeftSection>
     </CheckoutContainer>
