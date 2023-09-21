@@ -1,4 +1,11 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { CurrencyDollar, MapPin, Timer } from "phosphor-react";
+
+import { Icon } from "../../components/Icon";
+import Delivery from "../../assets/img/delivery.svg";
+import { useCoffee } from "../../hooks/useCoffee";
+
 import { 
   Container, 
   Content, 
@@ -9,10 +16,21 @@ import {
   RightSide 
 } from "./styles";
 
-import Delivery from "../../assets/img/delivery.svg";
-import { Icon } from "../../components/Icon";
-
 export function Success () {
+  const navigate = useNavigate();
+
+  const { checkoutData } = useCoffee();
+
+  useEffect(() => {
+    if (!checkoutData) {
+      navigate("/");
+    }
+  });
+
+  if (!checkoutData) {
+    return <></>;
+  }
+
   return (
     <Container>
       <h1>Uhu! Pedido confirmado</h1>
@@ -28,12 +46,12 @@ export function Success () {
                 <span>
                     Entrega em{" "}
                     <b>
-                      Av. GT 1
+                      {checkoutData.address.rua}, {checkoutData.address.numero}
                     </b>
                   </span>
                   <span>
-                    Condomínio Grand Trianon - Anápolis,{" "}
-                    Goiás
+                    {checkoutData.address.bairro} - {checkoutData.address.cidade},{" "}
+                    {checkoutData.address.uf}
                   </span>
               </InformationContent>
             </DetailValuesContent>
@@ -53,7 +71,7 @@ export function Success () {
               />
               <InformationContent>
                 <span>Pagamento na entrega</span>
-                <b>R$ 25,00</b>
+                <b>{checkoutData.paymentMethod}</b>
               </InformationContent>
             </DetailValuesContent>
           </DetailContent>
