@@ -1,4 +1,5 @@
 import { Button } from "../../../../components/Button";
+import { useCoffee } from "../../../../hooks/useCoffee";
 
 import { CheckoutCoffeeCard } from "../CheckoutCoffeeCard";
 
@@ -12,25 +13,28 @@ import {
 } from "./styles";
 
 export function CheckoutDetails() {
+  const { coffeeList, subtotal, deliveryPrice, totalPrice } = useCoffee();
 
   return (
     <>
-      <CheckoutCoffeeCard />
+      {coffeeList.map((coffee) => (
+        <CheckoutCoffeeCard key={coffee.id} coffee={coffee} />
+      ))}
 
       <CheckoutTotalPriceContent>
         <CheckoutValuesContent>
           <CheckoutValueTitle>Total de itens</CheckoutValueTitle>
-          <CheckoutValuePrice>3</CheckoutValuePrice>
+          <CheckoutValuePrice>{subtotal}</CheckoutValuePrice>
         </CheckoutValuesContent>
 
         <CheckoutValuesContent>
           <CheckoutValueTitle>Entrega</CheckoutValueTitle>
-          <CheckoutValuePrice>R$ 3,50</CheckoutValuePrice>
+          <CheckoutValuePrice>{deliveryPrice}</CheckoutValuePrice>
         </CheckoutValuesContent>
 
         <CheckoutValuesContent>
           <CheckoutValueTotalTitle>Total</CheckoutValueTotalTitle>
-          <CheckoutValueTotalPrice>R$ 33,20</CheckoutValueTotalPrice>
+          <CheckoutValueTotalPrice>{totalPrice}</CheckoutValueTotalPrice>
         </CheckoutValuesContent>
 
         <Button type="submit" color="yellow">
