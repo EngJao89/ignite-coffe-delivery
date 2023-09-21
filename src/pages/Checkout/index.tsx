@@ -115,7 +115,7 @@ export function Checkout (){
   const moneySelected = selectedPayment === "money";
 
   return (
-    <CheckoutContainer>
+    <CheckoutContainer onSubmit={handleSubmit(onSubmit)}>
       <RightSection>
         <Title>Complete seu pedido</Title>
 
